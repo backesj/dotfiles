@@ -3,8 +3,8 @@
   (load "~/.emacs"))
 
 ;;custom keyboard bindings
-(global-set-key (kbd "C-c C-v") 'indent-region)
 (global-set-key (kbd "C-c C-a") 'reload)
+(global-set-key (kbd "C-c C-v") 'comment-region)
 (global-set-key (kbd "C-c C-x") 'uncomment-region)
 (global-set-key (kbd "C-c C-n") 'cua-mode)
 
@@ -118,3 +118,5 @@
 (autopair-mode t)
 
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
+
+(ido-mode)

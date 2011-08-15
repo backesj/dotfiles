@@ -14,6 +14,9 @@ alias up6="pushd ../../../../../../"
 alias up7="pushd ../../../../../../../"
 alias up8="pushd ../../../../../../../../"
 
+#only hidden files
+alias llh="ls -A1 | grep \"^\.\""
+
 #git
 alias gup="git up"
 alias gst="git status"
@@ -24,4 +27,4 @@ alias gdiff="git diff"
 parse_git_branch() {
     git branch 2>/dev/null | grep '^*'| tr -d [:space:] | tr -d \"*\"
 }
-export PS1="\w:\[\033[0;37m\] (\$(parse_git_branch))$(tput sgr0)\$ "
+#export PS1="\w:\[\033[0;37m\] (\$(parse_git_branch))$(tput sgr0)\$ "
