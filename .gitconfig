@@ -1,0 +1,14 @@
+[user]
+	name = Evan Long
+	email = evan@scribd.com
+[diff]
+[alias]
+	wu = log --stat origin..@{0}
+	wup = log -p origin..@{0}
+	up = pull --rebase
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    
