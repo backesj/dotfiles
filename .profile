@@ -23,8 +23,45 @@ alias gst="git status"
 alias glog="git log"
 alias gbra="git branch"
 alias gdiff="git diff"
+alias gsho="git show"
+alias gco="git checkout"
+alias gcom="git checkout master"
+
+function _assert_arg_count() {
+    n=$1
+    e=$2
+    if [ ! $n -eq $e ]
+    then
+        echo "gave $n args needed $e"
+    fi
+}
+
+gcreate-remote() {
+    BNAME=$(git branch 2>/dev/null | grep '^*' | tr -d [:space:] | tr -d \"*\")
+    REMOTEBNAME=evan/$BNAME
+    git push origin $BNAME:$REMOTEBNAME
+    git branch --set-upstream $BNAME origin/$REMOTEBNAME
+}
+gbra-mine() {
+    git branch -r | grep evan
+}
+gkill-mine () {
+    _assert_arg_count $# 1
+    gbra -D $1
+    git push origin :evan/$1
+}
+gnew-branch() {
+    _assert_arg_count $# 1
+    git checkout -b $1
+}
+gnew-branch-remote() {
+    _assert_arg_count $# 1
+    git checkout -b $1
+    gcreate-remote
+}
 
 parse_git_branch() {
     git branch 2>/dev/null | grep '^*'| tr -d [:space:] | tr -d \"*\"
 }
 #export PS1="\w:\[\033[0;37m\] (\$(parse_git_branch))$(tput sgr0)\$ "
+export PS1="\w $ "
