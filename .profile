@@ -38,25 +38,23 @@ function _assert_arg_count() {
 
 gcreate-remote() {
     BNAME=$(git branch 2>/dev/null | grep '^*' | tr -d [:space:] | tr -d \"*\")
-    REMOTEBNAME=evan/$BNAME
-    git push origin $BNAME:$REMOTEBNAME
-    git branch --set-upstream $BNAME origin/$REMOTEBNAME
+    git push -u origin $BNAME
 }
 gbra-mine() {
     git branch -r | grep evan
 }
 gkill-mine () {
     _assert_arg_count $# 1
-    gbra -D $1
+    gbra -D evan/$1
     git push origin :evan/$1
 }
 gnew-branch() {
     _assert_arg_count $# 1
-    git checkout -b $1
+    git checkout -b evan/$1
 }
 gnew-branch-remote() {
     _assert_arg_count $# 1
-    git checkout -b $1
+    git checkout -b evan/$1
     gcreate-remote
 }
 
