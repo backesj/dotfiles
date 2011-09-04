@@ -1,5 +1,5 @@
 #Paths
-export PATH=$PATH:/Applications/Emacs.app/Contents/MacOS/:$HOME/bin:$HOME/development/mobile/OtherScripts
+export PATH=$PATH:/Applications/Emacs.app/Contents/MacOS/:$HOME/bin:$HOME/development/mobile/OtherScripts:/usr/local/git/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin
 export PYTHONPATH=/Users/evanlong/development/tools/python-libs
 
 alias ll="ls -l"
