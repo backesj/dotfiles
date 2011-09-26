@@ -1,6 +1,7 @@
 #Paths
 export PATH=$PATH:/Applications/Emacs.app/Contents/MacOS/:$HOME/bin:$HOME/development/mobile/OtherScripts:/usr/local/git/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin
 export PYTHONPATH=/Users/evanlong/development/tools/python-libs
+export EDITOR=emacs
 
 alias ll="ls -l"
 alias la="ls -a"
@@ -62,4 +63,4 @@ parse_git_branch() {
     git branch 2>/dev/null | grep '^*'| tr -d [:space:] | tr -d \"*\"
 }
 #export PS1="\w:\[\033[0;37m\] (\$(parse_git_branch))$(tput sgr0)\$ "
-export PS1="\w $ "
+#export PS1="\w $ "
