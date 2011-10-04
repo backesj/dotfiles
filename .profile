@@ -18,7 +18,7 @@ alias up8="pushd ../../../../../../../../"
 #only hidden files
 alias llh="ls -A1 | grep \"^\.\""
 
-#git
+#git helpers
 alias gup="git up"
 alias gst="git status"
 alias glog="git log"
@@ -58,6 +58,35 @@ gnew-branch-remote() {
     git checkout -b evan/$1
     gcreate-remote
 }
+gnew-team-branch-remote() {
+    _assert_arg_count $# 1
+    git checkout -b team/$1
+    gcreate-remote
+}
+gnew-branch-remote-named() {
+    _assert_arg_count $# 1
+    git checkout -b $1
+    gcreate-remote
+}
+#end git helpers
+
+#network helpers
+network-slow() {
+    _assert_arg_count $# 2
+    network-clear
+    sudo ipfw add 500 pipe 1 ip from any to any
+    sudo ipfw pipe 1 config bw $1kbit/s plr 0 delay $2ms
+}
+network-slow-128() {
+    network-slow 128 50
+}
+network-slow-64() {
+    network-slow 64 50
+}
+network-clear() {
+    sudo ipfw delete 500 2> /dev/null
+}
+#end network helpers
 
 parse_git_branch() {
     git branch 2>/dev/null | grep '^*'| tr -d [:space:] | tr -d \"*\"
