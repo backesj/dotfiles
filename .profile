@@ -100,3 +100,38 @@ parse_git_branch() {
 }
 #export PS1="\w:\[\033[0;37m\] (\$(parse_git_branch))$(tput sgr0)\$ "
 #export PS1="\w $ "
+
+#setup extra path variables based on a file
+add-to-path() {
+    export PATH=$1:$PATH
+}
+remove-from-path() {
+    export PATH=${PATH/$1:/}
+}
+cleanup-env() {
+    for line in `cat $1`
+    do
+        remove-from-path $line
+    done
+}
+setup-env() {
+    for line in `cat $1`
+    do
+        add-to-path $line
+    done
+}
+
+cd() {
+    if [ -e .__custom_env ]
+    then
+        cleanup-env ./.__custom_env
+    fi
+
+    builtin cd $@
+
+    if [ -e .__custom_env ]
+    then
+        setup-env ./.__custom_env
+    fi
+}
+
