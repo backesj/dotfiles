@@ -135,3 +135,6 @@ cd() {
     fi
 }
 
+source ~/bin/git-completion.bash
+
+

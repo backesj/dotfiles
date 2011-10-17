@@ -9,6 +9,7 @@
         track = branch --track
         kill-remote = push origin :$1
         mike-lewis = blame
+        co = checkout
 
 [color]
     diff = auto
