@@ -127,7 +127,7 @@ cd() {
         cleanup-env ./.__custom_env
     fi
 
-    builtin cd $@
+    builtin cd "$@"
 
     if [ -e .__custom_env ]
     then
