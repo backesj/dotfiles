@@ -1,4 +1,3 @@
-#Paths
 export PATH=$PATH:/Applications/Emacs.app/Contents/MacOS/:$HOME/bin:$HOME/development/mobile/OtherScripts:/usr/local/git/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin
 export PYTHONPATH=/Users/evanlong/development/tools/python-libs
 #dedup the paths
@@ -9,7 +8,9 @@ PATH="${PATH%:}"
 PYTHONPATH="${PYTHONPATH%:}"
 
 export EDITOR=emacs
+export LSCOLORS=hxfxcxdxbxegedabagacad
 
+alias ls="ls -G"
 alias ll="ls -l"
 alias la="ls -a"
 alias up="pushd .."
