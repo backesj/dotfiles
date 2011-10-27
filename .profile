@@ -76,6 +76,10 @@ gnew-branch-remote-named() {
     git checkout -b $1
     gcreate-remote
 }
+gtrack-branch() {
+    _assert_arg_count $# 1
+    git branch --track $1 origin/$1
+}
 #end git helpers
 
 #network helpers
