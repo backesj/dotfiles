@@ -121,6 +121,8 @@
 
 (ido-mode)
 
+(setq-default cursor-type '(bar . 1))
+
 (autoload 'markdown-mode "markdown-mode.el"
    "Major mode for editing Markdown files" t)
 (setq auto-mode-alist

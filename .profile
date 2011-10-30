@@ -1,4 +1,4 @@
-export PATH=$PATH:/Applications/Emacs.app/Contents/MacOS/:$HOME/bin:$HOME/development/mobile/OtherScripts:/usr/local/git/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin
+export PATH=/Applications/Emacs.app/Contents/MacOS/:$HOME/bin:$HOME/development/mobile/OtherScripts:/usr/local/git/bin:$PATH
 export PYTHONPATH=/Users/evanlong/development/tools/python-libs
 #dedup the paths
 #many thanks from http://codesnippets.joyent.com/posts/show/5049
