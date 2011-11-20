@@ -10,6 +10,7 @@
         kill-remote = push origin :$1
         mike-lewis = blame
         co = checkout
+        kdiff3 = mergetool -t kdiff3
 
 [color]
     diff = auto

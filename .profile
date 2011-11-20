@@ -143,6 +143,6 @@ cd() {
     fi
 }
 
-source ~/bin/git-completion.bash
+source ~/.git-completion.bash
 
 
