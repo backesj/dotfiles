@@ -1,0 +1,32 @@
+#Xcode
+*xcuserdata/
+*build/
+
+#emacs tags
+etags
+
+#python
+*.pyc
+
+#Visual Studio
+*.suo
+*.user
+
+#OS garbage
+*.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+#binaries
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+#dbs
+*.sql
+*.sqlite
+
