@@ -18,10 +18,6 @@
       `((".*" . "~/.emacs-auto-save")))
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
  '(case-fold-search t)
  '(current-language-environment "UTF-8")
  '(default-input-method "rfc1345")
@@ -30,82 +26,37 @@
  '(initial-buffer-choice nil)
  '(show-paren-mode t nil (paren))
  '(transient-mark-mode t))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
 
-(defun iden-newliner ()
-  (interactive)
-;;  (indent-according-to-mode)
-  (newline-and-indent))
-;;(global-set-key (kbd "RET") 'newline-and-indent)
-(global-set-key (kbd "RET") 'iden-newliner)
+(defun c-n-tab-indent (n)
+  (interactive "nSize:")
+  (setq c-default-style "linux"
+        c-basic-offset n)
+  (setq-default c-indent-level n)
+  (setq-default indent-tabs-mode t)
+  (setq default-tab-width n)
+  )
+
+(defun c-n-space-indent (n)
+  (interactive "nSize:")
+  (setq c-default-style "bsd"
+        c-basic-offset n)
+  (setq-default c-indent-level n)
+  (setq-default indent-tabs-mode nil)
+  )
+
+(c-n-space-indent 4)
+
+(global-set-key (kbd "RET") 'newline-and-indent)
 
 (global-font-lock-mode 1)
 
 (mouse-wheel-mode t)
 
-(setq c-default-style "bsd"
-      c-basic-offset 4)
-
 (setq column-number-mode t)
 
-;;(set-background-color "black")
-;;(set-foreground-color "white")
-
-;;(set-face-foreground 'font-lock-comment-face "green")
-;;(set-face-foreground 'font-lock-keyword-face "plum2")
 (set-face-attribute 'default nil :height 125 :family "Courier New")
 
-(setq-default indent-tabs-mode nil)
-(setq c-indent-level 4)
-
 (setq load-path (cons "~/.emacs-load-path" load-path))
-
-
-;;espresso
-;; (autoload #'espresso-mode "espresso" "Start espresso-mode" t)
-;; (add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
-;; (add-to-list 'auto-mode-alist '("\\.json$" . espresso-mode))
-;; (setq espresso-indent-level 4)
-
-;;js2-mode 
-;;(autoload 'js2-mode "js2" nil t)
-;;(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-  
-;;(set-face-foreground 'font-lock-variable-name-face "Black")
-;;(set-face-background 'font-lock-variable-name-face "White")
-;;(set-face-foreground 'font-lock-string-face "LimeGreen")
-;;(set-face-foreground 'font-lock-keyword-face "pink3")
-;; (set-face-foreground 'font-lock-function-name-face "Navy")
-;; (set-face-foreground 'font-lock-type-face "Red")
-
-
-;; Begin stuff for silver
-
-;; End stuff for silver
-
-;;(load "~/python-emacs/doctest-mode.el")
-;;(load "~/python-emacs/python-mode.el")
-;;(load "~/sml-emacs/sml-mode-startup.el")
-;;(load "~/prolog-emacs/prolog.el")
-
-
-;;(autoload 'run-prolog "prolog" "Start a Prolog sub-process." t)
-;;(autoload 'prolog-mode "prolog" "Major mode for editing Prolog programs." t)
-;;(autoload 'mercury-mode "prolog" "Major mode for editing Mercury programs." t)
-;;(setq prolog-system 'swi)
-;;(setq auto-mode-alist (append '(("\\.pl$" . prolog-mode)
-;;				("\\.m$" . mercury-mode))
-;;			      auto-mode-alist))
-
-;;(load "~/emacs-el/javascript.el")
-;;(autoload 'javascript-mode "javascript" nil t)
-;;(add-to-list 'auto-mode-alist '("\\.js\\'" . javascript-mode))
-;;(setq javascript-indent-level 2)
 
 (setq mac-allow-anti-aliasing nil)
 
@@ -129,3 +80,8 @@
    (cons '("\\.md" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist
    (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
+
+;;(add-to-list 'load-path "~/.emacs.d/vendor/textmate.el")
+(require 'textmate)
+(textmate-mode)
+
