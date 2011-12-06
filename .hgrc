@@ -4,6 +4,3 @@ username = Evan Long <annglove@gmail.com>
 [extensions]
 mq=
 rebase=
-hgext.bookmarks =
-hgext.churn = 
-hggit = 

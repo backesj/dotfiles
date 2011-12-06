@@ -1,7 +1,7 @@
 #probably the MOST important alias of all
 alias vim=emacs
 
-export PATH=/Applications/Emacs.app/Contents/MacOS/:$HOME/bin:$HOME/development/mobile/OtherScripts:/usr/local/git/bin:$PATH
+export PATH=/Users/evanlong/development/tools/python-env/bin:/Applications/Emacs.app/Contents/MacOS/:$HOME/bin:$HOME/development/mobile/OtherScripts:/usr/local/git/bin:$PATH
 export PYTHONPATH=/Users/evanlong/development/tools/python-libs
 #dedup the paths
 #many thanks from http://codesnippets.joyent.com/posts/show/5049
