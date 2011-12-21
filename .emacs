@@ -7,6 +7,7 @@
 (global-set-key (kbd "C-c C-v") 'comment-region)
 (global-set-key (kbd "C-c C-x") 'uncomment-region)
 (global-set-key (kbd "C-c C-n") 'cua-mode)
+(global-set-key (kbd "C-c C-r") 'rgrep)
 
 (add-hook 'python-mode-hook
           '(lambda () 
