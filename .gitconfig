@@ -20,3 +20,5 @@
 [push]
     default = upstream
     
+[core]
+	excludesfile = /Users/evanlong/.gitignore_global

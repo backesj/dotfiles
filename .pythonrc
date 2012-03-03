@@ -1,0 +1,13 @@
+# -*- mode: python -*-
+try:
+    import readline
+except ImportError:
+    print "Module readline not available."
+else:
+    import rlcompleter
+    import sys
+    completionString = "tab: complete"
+    if sys.platform == "darwin":
+       #thank you: http://stackoverflow.com/questions/675370/tab-completion-in-python-interpreter-in-os-x-terminal
+       completionString = "bind ^I rl_complete"
+    readline.parse_and_bind(completionString)

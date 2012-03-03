@@ -2,6 +2,8 @@
   (interactive)
   (load "~/.emacs"))
 
+(setq ring-bell-function 'ignore)
+
 ;;custom keyboard bindings
 (global-set-key (kbd "C-c C-a") 'reload)
 (global-set-key (kbd "C-c C-v") 'comment-region)
@@ -10,8 +12,10 @@
 (global-set-key (kbd "C-c C-r") 'rgrep)
 
 (add-hook 'python-mode-hook
-          '(lambda () 
+          '(lambda ()
              (local-set-key (kbd "C-c C-p") 'python-switch-to-python)))
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (setq compilation-scroll-output t)
 
@@ -75,6 +79,7 @@
 
 (setq-default cursor-type '(bar . 1))
 
+;; Markdown
 (autoload 'markdown-mode "markdown-mode.el"
    "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
@@ -82,6 +87,17 @@
 (setq auto-mode-alist
    (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 
+(defun markdown-custom()
+  (set-fill-column 79)
+  (auto-fill-mode t))
+
+(add-hook 'markdown-mode-hook
+          '(lambda () (markdown-custom)))
+
+;; Go
+(require 'go-mode-load)
+
+;; Textmate
 ;;(add-to-list 'load-path "~/.emacs.d/vendor/textmate.el")
 (require 'textmate)
 (textmate-mode)

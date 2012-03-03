@@ -10,6 +10,7 @@ PYTHONPATH="$(printf "%s" "${PYTHONPATH}" | /usr/bin/awk -v RS=: -v ORS=: '!($0 
 PATH="${PATH%:}"
 PYTHONPATH="${PYTHONPATH%:}"
 
+export PYTHONSTARTUP=~/.pythonrc
 export EDITOR=emacs
 export LSCOLORS=hxfxcxdxbxegedabagacad
 
@@ -25,6 +26,9 @@ alias up5="pushd ../../../../../"
 alias up6="pushd ../../../../../../"
 alias up7="pushd ../../../../../../../"
 alias up8="pushd ../../../../../../../../"
+
+#efffing Xcode
+alias fuxcode="killall -9 Xcode"
 
 #only hidden files
 alias llh="ls -A1 | grep \"^\.\""
