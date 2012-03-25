@@ -153,3 +153,7 @@ sendtoserver() {
     `echo "http://files.evanlong.info/rsynced/$1" | pbcopy`
     scp "$1" website@evanlong.info:~/files.evanlong.info/root/rsynced/
 }
+sendtodropbox() {
+    `echo "http://dl.dropbox.com/u/126589/rsynced/$1" | pbcopy`
+    cp "$1" ~/Dropbox/Public/rsynced/
+}
