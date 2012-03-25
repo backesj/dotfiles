@@ -149,4 +149,7 @@ cd() {
 
 source ~/.git-completion.bash
 
-
+sendtoserver() {
+    scp "$1" website@evanlong.info:~/files.evanlong.info/root/rsynced/
+    `echo "http://files.evanlong.info/rsynced/$1" | pbcopy`
+}
