@@ -13,6 +13,10 @@ PYTHONPATH="${PYTHONPATH%:}"
 export PYTHONSTARTUP=~/.pythonrc
 export EDITOR=emacs
 export LSCOLORS=hxfxcxdxbxegedabagacad
+export WORKHOME=/Users/evanlong/development/thuuz-work/enthuuz_mobile/ios/iphone/t1
+
+#pretty colors
+alias grep="grep --color=auto"
 
 alias ls="ls -G"
 alias ll="ls -l"
@@ -147,8 +151,10 @@ cd() {
     fi
 }
 
+#git autocomplete
 source ~/.git-completion.bash
 
+#makes sharing of files a bit easier via http
 sendtoserver() {
     `echo "http://files.evanlong.info/rsynced/$1" | pbcopy`
     scp "$1" website@evanlong.info:~/files.evanlong.info/root/rsynced/
@@ -156,4 +162,10 @@ sendtoserver() {
 sendtodropbox() {
     `echo "http://dl.dropbox.com/u/126589/rsynced/$1" | pbcopy`
     cp "$1" ~/Dropbox/Public/rsynced/
+}
+
+#virtual box helpers
+mountvboxshare() {
+    wami=`whoami`
+    sudo mount -t vboxsf -o uid=`id -u $wami`,gid=`id -g $wami` $1 /home/$wami/$1
 }
