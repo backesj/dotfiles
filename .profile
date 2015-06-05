@@ -1,8 +1,7 @@
 #probably the MOST important alias of all
 alias vim=emacs
 
-export PATH=/Users/evanlong/development/tools/python-env/bin:/Applications/Emacs.app/Contents/MacOS/:$HOME/bin:$HOME/development/mobile/OtherScripts:/usr/local/git/bin:$PATH
-export PYTHONPATH=/Users/evanlong/development/tools/python-libs:/Library/Python/2.7/site-packages/
+export PATH=/Users/evanlong/development/Environments/Python/Default/bin:$HOME/bin:$PATH
 #dedup the paths
 #many thanks from http://codesnippets.joyent.com/posts/show/5049
 PATH="$(printf "%s" "${PATH}" | /usr/bin/awk -v RS=: -v ORS=: '!($0 in a) {a[$0]; print}')"
@@ -36,6 +35,55 @@ alias fuxcode="killall -9 Xcode"
 
 #only hidden files
 alias llh="ls -A1 | grep \"^\.\""
+
+#servers
+alias servedir="python -m SimpleHTTPServer 8000 ."
+
+listNetworkServices() {
+    networksetup -listallnetworkservices
+}
+
+setSocksPort() {
+    port=$1
+    if [ -z $port ]
+    then
+        port=8989
+    fi
+
+    service=$2
+    if [ -z $service ]
+    then
+        service="Wi-Fi"
+    fi
+    sudo networksetup -setsocksfirewallproxy $service localhost $port
+}
+
+enableSocks() {
+    service=$1
+    if [ -z $service ]
+    then
+        service="Wi-Fi"
+    fi
+    sudo networksetup -setsocksfirewallproxystate $service on
+}
+
+disableSocks() {
+    service=$1
+    if [ -z $service ]
+    then
+        service="Wi-Fi"
+    fi
+    sudo networksetup -setsocksfirewallproxystate $service off
+}
+
+beginSocksSession() {
+    echo "Starting SOCKS session"
+    setSocksPort 9000
+    enableSocks
+    ssh annglove@evanlong.org -D 9000
+    disableSocks
+    echo "Ended SOCKS session"
+}
 
 #git helpers
 alias gup="git up"
