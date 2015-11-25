@@ -11,13 +11,12 @@ PYTHONPATH="${PYTHONPATH%:}"
 
 export PYTHONSTARTUP=~/.pythonrc
 export EDITOR=emacs
-export LSCOLORS=hxfxcxdxbxegedabagacad
-export WORKHOME=/Users/evanlong/development/thuuz-work/enthuuz_mobile/ios/iphone/t1
+# export LSCOLORS=ExFxBxDxCxegedabagacad
+# export CLICOLOR=1
 
 #pretty colors
 alias grep="grep --color=auto"
-
-alias ls="ls -G"
+alias ls='ls -GFh'
 alias ll="ls -l"
 alias la="ls -a"
 alias up="pushd .."
@@ -199,6 +198,23 @@ cd() {
     fi
 }
 
+cdf () {
+    currFolderPath=$( /usr/bin/osascript <<EOT
+        tell application "Finder"
+            try
+        set currFolder to (folder of the front window as alias)
+            on error
+        set currFolder to (path to desktop folder as alias)
+            end try
+            POSIX path of currFolder
+        end tell
+EOT
+    )
+    echo "cd to \"$currFolderPath\""
+    cd "$currFolderPath"
+}
+
+
 #git autocomplete
 source ~/.git-completion.bash
 
@@ -236,3 +252,8 @@ sim-install-certs() {
 
     echo "The Charles SSL CA Certificate has been installed for the iPhone Simulator"
 }
+
+export PS1='\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\W\[\033[35m\]$(__git_ps1 " (%s)")\[\033[m\]\$ '
+
+
+    
