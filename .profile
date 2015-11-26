@@ -38,6 +38,19 @@ alias llh="ls -A1 | grep \"^\.\""
 #servers
 alias servedir="python -m SimpleHTTPServer 8000 ."
 
+# Determines public ip address
+alias publicip="curl http://ip.appspot.com ; echo"
+localip() {
+    service=$1
+    if [ -z $service ]
+    then
+        service="Wi-Fi"
+    fi
+
+    networksetup -getinfo $service | grep --color=none "IP address"
+}
+
+
 listNetworkServices() {
     networksetup -listallnetworkservices
 }
