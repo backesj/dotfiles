@@ -39,7 +39,10 @@ alias llh="ls -A1 | grep \"^\.\""
 alias servedir="python -m SimpleHTTPServer 8000 ."
 
 # Determines public ip address
-alias publicip="curl http://ip.appspot.com ; echo"
+publicip() {
+    curl http://ip.appspot.com
+    echo
+}
 localip() {
     service=$1
     if [ -z $service ]
@@ -227,6 +230,26 @@ EOT
     cd "$currFolderPath"
 }
 
+loopcmd () {
+    cmd=$1
+    delay=$2
+
+    if [ -z $cmd ]
+    then
+        echo "Usage: loopcmd COMMAND [DELAY]"
+        return 1
+    fi
+
+    if [ -z $delay ]
+    then
+        delay=2
+    fi
+
+    while [ true ]; do
+        $cmd
+        sleep $delay
+    done
+}
 
 #git autocomplete
 source ~/.git-completion.bash
