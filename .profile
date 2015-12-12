@@ -88,6 +88,7 @@ disableSocks() {
     then
         service="Wi-Fi"
     fi
+    echo "May need to enter sudo password..."
     sudo networksetup -setsocksfirewallproxystate $service off
 }
 
