@@ -40,7 +40,7 @@ alias servedir="python -m SimpleHTTPServer 8000 ."
 
 # Determines public ip address
 publicip() {
-    curl http://ip.appspot.com
+    curl http://evanip-1224.appspot.com
     echo
 }
 localip() {
@@ -257,8 +257,22 @@ source ~/.git-completion.bash
 
 #makes sharing of files a bit easier via http
 sendtoserver() {
-    `echo "http://files.evanlong.info/rsynced/$1" | pbcopy`
-    rsync -av "$1" website@evanlong.info:~/files.evanlong.info/root/rsynced/
+    src=$1
+    dest=$2
+
+    if [ -z $src ]
+    then
+        echo "Usage: sendtoserver SOURCE [DESTINATION_NAME]"
+        return 1
+    fi
+
+    if [ -z $dest ]
+    then
+        dest=$src
+    fi
+
+    `echo "http://files.evanlong.info/rsynced/$dest" | pbcopy`
+    rsync -av "$src" website@evanlong.info:~/files.evanlong.info/root/rsynced/$dest
 }
 sendtodropbox() {
     `echo "http://dl.dropbox.com/u/126589/rsynced/$1" | pbcopy`
