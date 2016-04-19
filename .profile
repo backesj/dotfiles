@@ -37,6 +37,7 @@ alias llh="ls -A1 | grep \"^\.\""
 
 #servers
 alias servedir="python -m SimpleHTTPServer 8000 ."
+alias genuuid="python -c \"import os; import uuid; print str(uuid.UUID(bytes=os.urandom(16)))\""
 
 # Determines public ip address
 publicip() {
