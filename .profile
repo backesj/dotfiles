@@ -54,6 +54,9 @@ localip() {
     networksetup -getinfo $service | grep --color=none "IP address"
 }
 
+bjlookup() {
+    dig -x $1 @224.0.0.251 -p 5353
+}
 
 listNetworkServices() {
     networksetup -listallnetworkservices
