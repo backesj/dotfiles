@@ -1,7 +1,7 @@
 #probably the MOST important alias of all
 alias vim=emacs
 
-export PATH=/Users/evanlong/development/Environments/Python/Default/bin:$HOME/bin:$PATH
+export PATH=$HOME/development/Applications/mysql-server/bin:$HOME/development/Environments/Python/Default/bin:$HOME/bin:$PATH
 #dedup the paths
 #many thanks from http://codesnippets.joyent.com/posts/show/5049
 PATH="$(printf "%s" "${PATH}" | /usr/bin/awk -v RS=: -v ORS=: '!($0 in a) {a[$0]; print}')"
@@ -39,6 +39,11 @@ alias llh="ls -A1 | grep \"^\.\""
 alias servedir="python -m SimpleHTTPServer 8000 ."
 alias genuuid="python -c \"import os; import uuid; print str(uuid.UUID(bytes=os.urandom(16)))\""
 
+#mysqld
+alias serve.mysql="mysqld --basedir . --datadir ."
+alias init.mysql="mysqld --basedir . --datadir . --initialize"
+alias init.unsafe.mysql="mysqld --basedir . --datadir . --initialize-insecure"
+
 # Determines public ip address
 publicip() {
     curl http://evanip-1224.appspot.com
@@ -63,17 +68,18 @@ listNetworkServices() {
 }
 
 setSocksPort() {
-    port=$1
+    service=$1
+    if [ -z $service ]
+    then
+        service="Wi-Fi"
+    fi
+
+    port=$2
     if [ -z $port ]
     then
         port=8989
     fi
 
-    service=$2
-    if [ -z $service ]
-    then
-        service="Wi-Fi"
-    fi
     sudo networksetup -setsocksfirewallproxy $service localhost $port
 }
 
@@ -97,11 +103,17 @@ disableSocks() {
 }
 
 beginSocksSession() {
-    echo "Starting SOCKS session"
-    setSocksPort 9000
-    enableSocks
+    service=$1
+    if [ -z $service ]
+    then
+        service="Wi-Fi"
+    fi
+
+    echo "Starting SOCKS session on $service"
+    setSocksPort $service 9000
+    enableSocks $service
     ssh annglove@evanlong.org -D 9000
-    disableSocks
+    disableSocks $service
     echo "Ended SOCKS session"
 }
 
