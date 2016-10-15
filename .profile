@@ -31,6 +31,8 @@ alias up8="pushd ../../../../../../../../"
 
 #efffing Xcode
 alias fuxcode="killall -9 Xcode"
+export xcodedata="Library/Developer/Xcode"
+export crashlogs="Library/Logs/CrashReporter"
 
 #only hidden files
 alias llh="ls -A1 | grep \"^\.\""
@@ -322,5 +324,7 @@ sim-install-certs() {
 
 export PS1='\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\W\[\033[35m\]$(__git_ps1 " (%s)")\[\033[m\]\$ '
 
-
-    
+source $HOME/development/Applications/google-cloud-sdk/path.bash.inc
+source $HOME/development/Applications/google-cloud-sdk/completion.bash.inc
+export CLOUDSDK_CORE_PROJECT=otr-project
+export CLOUDSDK_PYTHON=/usr/bin/python

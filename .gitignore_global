@@ -27,6 +27,5 @@ Thumbs.db
 *.so
 
 #dbs
-*.sql
 *.sqlite
 
