@@ -46,6 +46,13 @@ alias serve.mysql="mysqld --basedir . --datadir ."
 alias init.mysql="mysqld --basedir . --datadir . --initialize"
 alias init.unsafe.mysql="mysqld --basedir . --datadir . --initialize-insecure"
 
+# Network Helper
+setComputerName() {
+    sudo scutil --set ComputerName $1
+    sudo scutil --set HostName $1
+    sudo scutil --set LocalHostName $1
+}
+
 # Determines public ip address
 publicip() {
     curl http://evanip-1224.appspot.com
