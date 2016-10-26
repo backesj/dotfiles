@@ -331,7 +331,15 @@ sim-install-certs() {
 
 export PS1='\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\W\[\033[35m\]$(__git_ps1 " (%s)")\[\033[m\]\$ '
 
-source $HOME/development/Applications/google-cloud-sdk/path.bash.inc
-source $HOME/development/Applications/google-cloud-sdk/completion.bash.inc
+googlePathBash=$HOME/development/Applications/google-cloud-sdk/path.bash.inc
+if [ -f $googlePathBash ]; then
+    source $googlePathBash
+fi
+
+googleCompletion=$HOME/development/Applications/google-cloud-sdk/completion.bash.inc
+if [ -f $googleCompletion ]; then
+    source $googleCompletion
+fi
+
 export CLOUDSDK_CORE_PROJECT=otr-project
 export CLOUDSDK_PYTHON=/usr/bin/python
