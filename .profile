@@ -31,8 +31,9 @@ alias up8="pushd ../../../../../../../../"
 
 #efffing Xcode
 alias fuxcode="killall -9 Xcode"
-export xcodedata="Library/Developer/Xcode"
-export crashlogs="Library/Logs/CrashReporter"
+export xcodedata="$HOME/Library/Developer/Xcode"
+export crashlogs="$HOME/Library/Logs/CrashReporter"
+alias trustit="xattr -d com.apple.quarantine"
 
 #only hidden files
 alias llh="ls -A1 | grep \"^\.\""
