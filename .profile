@@ -10,7 +10,7 @@ PATH="${PATH%:}"
 PYTHONPATH="${PYTHONPATH%:}"
 
 export PYTHONSTARTUP=~/.pythonrc
-export EDITOR=emacs
+export EDITOR=subl
 # export LSCOLORS=ExFxBxDxCxegedabagacad
 # export CLICOLOR=1
 
