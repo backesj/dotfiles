@@ -11,6 +11,8 @@
         mike-lewis = blame
         co = checkout
         kdiff3 = mergetool -t kdiff3
+        diffc = diff --cached
+        difftoolc = difftool --cached
 
 [color]
     diff = auto
