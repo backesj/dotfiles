@@ -1,18 +1,17 @@
 [user]
-        name = Evan Long
-        email = annglove@gmail.com
+    name = Evan Long
+    email = annglove@gmail.com
 
 [alias]
-        wu = log --stat origin..@{0}
-        wup = log -p origin..@{0}
-        up = pull --rebase
-        track = branch --track
-        kill-remote = push origin :$1
-        mike-lewis = blame
-        co = checkout
-        kdiff3 = mergetool -t kdiff3
-        diffc = diff --cached
-        difftoolc = difftool --cached
+    wu = log --stat origin..@{0}
+    wup = log -p origin..@{0}
+    up = pull --rebase
+    track = branch --track
+    kill-remote = push origin :$1
+    co = checkout
+    kdiff3 = mergetool -t kdiff3
+    diffc = diff --cached
+    difftoolc = difftool --cached
 
 [color]
     diff = auto
@@ -24,5 +23,4 @@
 
 [core]
     excludesfile = ~/.gitignore_global
-	editor = subl -n -w
-
+    editor = subl -n -w

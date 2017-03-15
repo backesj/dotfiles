@@ -43,9 +43,9 @@ alias servedir="python -m SimpleHTTPServer 8000 ."
 alias genuuid="python -c \"import os; import uuid; print str(uuid.UUID(bytes=os.urandom(16)))\""
 
 #mysqld
-alias serve.mysql="mysqld --basedir . --datadir ."
-alias init.mysql="mysqld --basedir . --datadir . --initialize"
-alias init.unsafe.mysql="mysqld --basedir . --datadir . --initialize-insecure"
+alias serve.mysql="mysqld_safe --basedir . --datadir ."
+alias init.mysql="mysqld_safe --basedir . --datadir . --initialize"
+alias init.unsafe.mysql="mysqld_safe --basedir . --datadir . --initialize-insecure"
 
 # Network Helper
 setComputerName() {
